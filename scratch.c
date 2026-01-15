@@ -1,17 +1,24 @@
 #include <stdio.h>
-#define dprint(expr) printf(#expr " = %d\n", expr);
+#define dprint(expr) printf(#expr " = %i\n", expr);
+
+int strlength(char *s) {
+    int n = 0;
+    while (*s != '\0') {
+        s++;
+        n++;
+    }
+    return n;
+}
+
+int strlength2(char *s) {
+    char *p = s;
+    while (*p != '\0') {
+        p++;
+    }
+
+    return (p - s);
+}
 
 int main(void) {
-  int x = 1, y = 2, z[10] = {9, 2, 3, 4, 5, 6, 7, 8, 6, 1};
-  dprint(x);
-  dprint(y);
-  int *ip;
-  ip = &x;
-  dprint(*ip);
-  y = *ip;
-  *ip = 0;
-  ip = &z[0];
-  dprint(x);
-  dprint(y);
-  dprint(*ip);
+    dprint(strlength("hello world"));
 }
