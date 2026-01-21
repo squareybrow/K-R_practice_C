@@ -1,8 +1,25 @@
 zebra
 apple
-mango
+Zebra
+APPLE
 banana
-cherry
-dog
-elephant
-cat
+123numbers
+!special
+the quick brown fox
+The Quick Brown Fox
+a
+aardvark
+zzz
+multiple words here
+CamelCase
+snake_case
+with-dashes
+tab	separated
+trailing spaces   
+empty line below
+
+short
+verylonglinewithnospacesjusttotestbufferhandlingandmemoryallocation
+duplicate
+duplicate
+Duplicate
