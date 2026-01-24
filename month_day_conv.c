@@ -23,6 +23,17 @@ void month_day(int year, int yearday, int *month, int *day) {
   *day = yearday;
 }
 
+char *month_name(int n) {
+  static char *name[] = {"Illegal Month", "January",   "Februrary", "March",
+                         "April",         "May",       "June",      "July",
+                         "August",        "September", "October",   "November",
+                         "December"};
+
+  if (n < 1 || n > 12)
+    return name[0];
+  return name[n];
+}
+
 int main(void) {
   // Test day_of_year function
   printf("Testing day_of_year:\n");
@@ -66,6 +77,39 @@ int main(void) {
   month_day(2023, 185, &month, &day);
   printf("Day 185 of 2023: Month %d, Day %d (expected: Month 7, Day 4)\n",
          month, day);
+
+  printf("\nTesting month_name:\n");
+  printf("Month 1: %s (expected: January)\n", month_name(1));
+  printf("Month 6: %s (expected: June)\n", month_name(6));
+  printf("Month 12: %s (expected: December)\n", month_name(12));
+  printf("Month 0 (invalid): %s (expected: Illegal Month)\n", month_name(0));
+  printf("Month 13 (invalid): %s (expected: Illegal Month)\n", month_name(13));
+
+  printf("\nTesting edge cases:\n");
+
+  // Leap year edge cases
+  printf("Feb 28, 2024 (leap): %d (expected: 59)\n", day_of_year(2024, 2, 28));
+  printf("Feb 28, 2023 (non-leap): %d (expected: 59)\n",
+         day_of_year(2023, 2, 28));
+
+  // Century year leap year rules
+  printf("Dec 31, 2000 (leap century): %d (expected: 366)\n",
+         day_of_year(2000, 12, 31));
+  printf("Dec 31, 1900 (non-leap century): %d (expected: 365)\n",
+         day_of_year(1900, 12, 31));
+
+  // Month boundaries
+  month_day(2024, 31, &month, &day);
+  printf("Day 31 of 2024: Month %d, Day %d (expected: Month 1, Day 31)\n",
+         month, day);
+
+  month_day(2023, 59, &month, &day);
+  printf("Day 59 of 2023: Month %d, Day %d (expected: Month 2, Day 28)\n",
+         month, day);
+
+  month_day(2023, 60, &month, &day);
+  printf("Day 60 of 2023: Month %d, Day %d (expected: Month 3, Day 1)\n", month,
+         day);
 
   return 0;
 }
