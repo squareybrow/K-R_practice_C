@@ -1,0 +1,6 @@
+hello world
+this is a test
+hello again
+another line
+HELLO uppercase
+test pattern here
