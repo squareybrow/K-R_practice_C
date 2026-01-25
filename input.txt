@@ -17,7 +17,6 @@ with-dashes
 tab	separated
 trailing spaces   
 empty line below
-
 short
 verylonglinewithnospacesjusttotestbufferhandlingandmemoryallocation
 duplicate
