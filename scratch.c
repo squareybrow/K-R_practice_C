@@ -1,24 +1,8 @@
 #include <stdio.h>
-#define dprint(expr) printf(#expr " = %i\n", expr);
-
-int strlength(char *s) {
-    int n = 0;
-    while (*s != '\0') {
-        s++;
-        n++;
-    }
-    return n;
-}
-
-int strlength2(char *s) {
-    char *p = s;
-    while (*p != '\0') {
-        p++;
-    }
-
-    return (p - s);
-}
+#define dprint(expr) printf(#expr " = %c\n", expr);
 
 int main(void) {
-    dprint(strlength("hello world"));
+    char *str[3] = {"HELLO", "SLATE", "TARES"};
+    dprint(*++(str)[2]);
+    dprint(*++str[2]);
 }
