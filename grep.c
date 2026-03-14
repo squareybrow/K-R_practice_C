@@ -1,30 +1,30 @@
 #include <stdio.h>
 #include <string.h>
-#define MAXLINE 1000
 
-int get_line(char *s, int lim) {
-  int i;
-  int c = getchar();
-  for (i = 0; i < lim - 1 && c != EOF && c != '\n'; i++) {
-    s[i] = c;
-    c = getchar();
+enum {MAXLINE = 1000};
+
+int get_line(char *line, int lim) {
+  int i = 0;
+  int c;
+  for (i = 0; i < lim - 1 && (c = getchar()) != EOF  && c != '\n'; i++) {
+    line[i] = c;
   }
-  s[i] = '\0';
+  line[i] = '\0';
   return i;
 }
 
 int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    printf("Usage: grep <pattern>");
+    return -1;
+  }
+
   char line[MAXLINE];
   int found = 0;
-
-  if (argc != 2)
-    printf("Usage: find pattern\n");
-  else {
-    while (get_line(line, MAXLINE) > 0) {
-      if (strstr(line, argv[1]) != NULL) {
-        printf("%s\n", line);
-        found++;
-      }
+  while (get_line(line, MAXLINE) > 0) {
+    if (strstr(line, argv[1]) != NULL) {
+      printf("%s\n", line);
+      found++;
     }
   }
   return found;
